@@ -1,4 +1,4 @@
-package ca.bcit.comp2522.appledevices;
+package ca.bcit.comp2522.appledevice;
 
 /**
  * Models an IDevice, a parent of an IPad, IPhone, IPhone17, and IPod.
@@ -27,7 +27,7 @@ abstract class IDevice
      *
      * @return the purpose of this IDevice
      */
-    public String getPurpose()
+    protected String getPurpose()
     {
         return purpose;
     }

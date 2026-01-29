@@ -1,4 +1,4 @@
-package ca.bcit.comp2522.appledevices;
+package ca.bcit.comp2522.appledevice;
 
 /**
  * Models an IPad.
