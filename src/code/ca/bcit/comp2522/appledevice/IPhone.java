@@ -5,6 +5,7 @@ package ca.bcit.comp2522.appledevice;
  *
  * @author Mischa Potter Set D
  * @author Sal Yunus Set D
+ * @author Steven Chi Set D
  * @version 1.0
  */
 class IPhone extends IDevice
@@ -103,5 +104,11 @@ class IPhone extends IDevice
         final IPhone p;
         p = (IPhone) o;
         return this.numMinutesRemaining == p.getNumMinutesRemaining();
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return 0;
     }
 }
