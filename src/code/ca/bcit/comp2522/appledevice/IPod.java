@@ -122,7 +122,7 @@ final class IPod extends IDevice
     }
 
 
-    private void validateMaxVolumeDb(double maxVolumeDb)
+    private static void validateMaxVolumeDb(double maxVolumeDb)
     {
         if(maxVolumeDb < MIN_VOLUME_DECIBELS ||
            maxVolumeDb > MAX_VOLUME_DECIBELS)
@@ -132,7 +132,7 @@ final class IPod extends IDevice
         }
     }
 
-    private void validateNumSongsSorted(int numSongsStored)
+    private static void validateNumSongsSorted(int numSongsStored)
     {
         if(numSongsStored < MIN_SONGS_STORED ||
            numSongsStored > MAX_SONGS_STORED)
