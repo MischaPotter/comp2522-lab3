@@ -1,7 +1,7 @@
 package ca.bcit.comp2522.appledevice;
 
 /**
- * Models an IPhone that has the number of minutes remaining for this IPhone and the carrier.
+ * Models an iPhone that has the number of minutes remaining for this iPhone and the carrier.
  *
  * @author Mischa Potter Set D
  * @author Sal Yunus Set D
@@ -25,7 +25,7 @@ class IPhone extends IDevice
     }
 
     /**
-     * Gets the number of minutes remaining on this IPhone's cell plan.
+     * Gets the number of minutes remaining on this iPhone's cell plan.
      *
      * @return the number of minutes remaining
      */
@@ -35,7 +35,7 @@ class IPhone extends IDevice
     }
 
     /**
-     * Gets the name of this IPhone's carrier.
+     * Gets the name of this iPhone's carrier.
      *
      * @return the carrier
      */
@@ -45,7 +45,7 @@ class IPhone extends IDevice
     }
 
     /**
-     * Sets the number of minutes remaining for this IPhone.
+     * Sets the number of minutes remaining for this iPhone.
      *
      * @param numMinutesRemaining the new amount of minutes remaining
      */
@@ -55,7 +55,7 @@ class IPhone extends IDevice
     }
 
     /**
-     * Sets this IPhone's character to a new carrier.
+     * Sets this iPhone's character to a new carrier.
      *
      * @param carrier the new carrier
      */
@@ -73,26 +73,44 @@ class IPhone extends IDevice
      */
     private static void validateCarrier(final String carrier)
     {
-        if (carrier == null || carrier.isEmpty())
+        if (carrier == null || carrier.isBlank())
         {
             throw new IllegalArgumentException("Invalid carrier: " + carrier);
         }
     }
 
     /**
-     * Prints the details of this IPhone.
+     * Prints the details of this iPhone.
      */
     public void printDetails()
     {
-        System.out.println("Number of minutes remaining on phone plan: " + numMinutesRemaining +
-                           "\nCarrier: " + carrier);
+        System.out.println(this);
     }
 
     /**
-     * Implementation for equals method.
+     * Returns a String representation of this iPhone.
+     * @return a formatted string describing the iPhone state.
+     */
+    @Override
+    public String toString()
+    {
+        final StringBuilder builder;
+        builder = new StringBuilder();
+
+        builder.append("Number of minutes remaining on phone plan: ");
+        builder.append(numMinutesRemaining);
+        builder.append("\nCarrier: ");
+        builder.append(carrier);
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns true if two iPhone have the same amount of minutes remaining.
      *
      * @param o the reference object with which to compare
-     * @return
+     *
+     * @return is the object equals to this one.
      */
     @Override
     public boolean equals(Object o)
@@ -101,8 +119,10 @@ class IPhone extends IDevice
         {
             return false;
         }
+
         final IPhone p;
         p = (IPhone) o;
+
         return this.numMinutesRemaining == p.getNumMinutesRemaining();
     }
 
