@@ -38,6 +38,11 @@ abstract class IDevice
      */
     public abstract void printDetails();
 
-    @Override
-    public abstract String toString();
+//    /**
+//     * Returns all the instance variables in a single String.
+//     *
+//     * @return a String contains all instance variables
+//     */
+//    @Override
+//    public abstract String toString();
 }
