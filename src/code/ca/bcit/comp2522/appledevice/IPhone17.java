@@ -1,11 +1,12 @@
 package ca.bcit.comp2522.appledevice;
 
+import java.util.Objects;
+
 /**
  * Models an IPhone17, a subclass of an IPhone.
  *
  * @author Mischa Potter Set D
  * @author Steven Chi Set D
- *
  * @version 1.0
  */
 
@@ -102,7 +103,7 @@ final class IPhone17 extends IPhone
     @Override
     public int hashCode()
     {
-        return (int) this.getNumMinutesRemaining();
+        return Objects.hashCode(this.memoryGb);
     }
 
     /**

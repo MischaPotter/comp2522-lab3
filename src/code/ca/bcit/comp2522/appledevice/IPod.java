@@ -1,11 +1,12 @@
 package ca.bcit.comp2522.appledevice;
 
+import java.util.Objects;
+
 /**
  * Models an iPod that have number of songs stored, and maximum volume in decibels.
  *
  * @author Mischa Potter Set D
  * @author Steven Chi Set D
- *
  * @version 1.0
  */
 final class IPod extends IDevice
@@ -124,7 +125,7 @@ final class IPod extends IDevice
     @Override
     public int hashCode()
     {
-        return this.numSongsStored;
+        return Objects.hashCode(this.numSongsStored);
     }
 
     /*

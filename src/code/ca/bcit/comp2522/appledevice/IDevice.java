@@ -1,11 +1,12 @@
 package ca.bcit.comp2522.appledevice;
 
+import java.util.Objects;
+
 /**
  * Models an IDevice, a parent of an IPad, IPhone, IPhone17, and IPod.
  *
  * @author Mischa Potter Set D
  * @author Steven Chi Set D
- *
  * @version 1.0
  */
 
@@ -47,5 +48,36 @@ abstract class IDevice
     public String toString()
     {
         return "Part of the IDevice family\n";
+    }
+
+    /**
+     * Checks if another object is equal to an IDevice.
+     *
+     * @param o the reference object with which to compare.
+     * @return true if the objects are equal
+     */
+    @Override
+    public boolean equals(final Object o)
+    {
+        if (!(o instanceof IDevice))
+        {
+            return false;
+        }
+
+        final IDevice d;
+        d = (IDevice) o;
+
+        return purpose.equals(d.getPurpose());
+    }
+
+    /**
+     * Gets the hashcode for this IDevice.
+     *
+     * @return the hashcode
+     */
+    @Override
+    public int hashCode()
+    {
+        return Objects.hashCode(purpose);
     }
 }

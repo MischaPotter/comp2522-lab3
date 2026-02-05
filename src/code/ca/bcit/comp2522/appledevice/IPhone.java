@@ -1,11 +1,12 @@
 package ca.bcit.comp2522.appledevice;
 
+import java.util.Objects;
+
 /**
  * Models an iPhone that has the number of minutes remaining for this iPhone and the carrier.
  *
  * @author Mischa Potter Set D
  * @author Steven Chi Set D
- *
  * @version 1.0
  */
 class IPhone extends IDevice
@@ -110,7 +111,7 @@ class IPhone extends IDevice
     @Override
     public int hashCode()
     {
-        return (int) this.numMinutesRemaining;
+        return Objects.hashCode(this.numMinutesRemaining);
     }
 
     /**
