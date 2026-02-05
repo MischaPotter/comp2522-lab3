@@ -5,48 +5,71 @@ package ca.bcit.comp2522.appledevice;
  * the device is protected by a case.
  *
  * @author Mischa Potter Set D
- * @author Sal Yunus Set D
  * @author Steven Chi Set D
  * @version 1.0
  */
 final class IPad extends IDevice
 {
-    private final boolean hasCase;
-    private final String osVersion;
+    private boolean encased;
+    private String  osVersion;
 
     /**
      * Constructs an iPad with specific data.
      *
-     * @param hasCase a Boolean representing if the iPad has a case
+     * @param encased   a Boolean representing if the iPad has a case
      * @param osVersion the operating system version
      */
-    IPad(final Boolean hasCase,
+    IPad(final Boolean encased,
          final String osVersion)
     {
         super("learning");
 
         validateOsVersion(osVersion);
 
-        this.hasCase = hasCase;
+        this.encased   = encased;
         this.osVersion = osVersion;
     }
 
     /**
      * Returns does this iPad being protecting by case.
-     * @return true if this iPad have case.
+     *
+     * @return true if this iPad is encased
      */
-    public boolean isHasCase()
+    protected boolean getEncased()
     {
-        return hasCase;
+        return encased;
     }
 
     /**
      * Returns this iPadOS version.
-     * @return this iPadOS version.
+     *
+     * @return this iPadOS version
      */
-    public String getOsVersion()
+    protected String getOsVersion()
     {
         return osVersion;
+    }
+
+    /**
+     * Sets this IPad's case value.
+     *
+     * @param encased what the new status of the case is
+     */
+    public void setEncased(final boolean encased)
+    {
+        this.encased = encased;
+    }
+
+    /**
+     * Sets this IPad's OS version to a new OS version.
+     *
+     * @param osVersion the new OS version
+     */
+    public void setOsVersion(final String osVersion)
+    {
+        validateOsVersion(osVersion);
+
+        this.osVersion = osVersion;
     }
 
     /**
@@ -59,7 +82,8 @@ final class IPad extends IDevice
 
     /**
      * Returns a String representation of this iPad.
-     * @return a formatted string describing the iPad state.
+     *
+     * @return a formatted string describing the iPad state
      */
     @Override
     public String toString()
@@ -67,8 +91,9 @@ final class IPad extends IDevice
         final StringBuilder builder;
         builder = new StringBuilder();
 
+        builder.append(super.toString());
         builder.append("Has case: ");
-        builder.append(hasCase);
+        builder.append(encased);
         builder.append("\nOS version: ");
         builder.append(osVersion);
 
@@ -79,8 +104,7 @@ final class IPad extends IDevice
      * Returns true if two iPads have the same OS version.
      *
      * @param o the reference object with which to compare
-     *
-     * @return is the object equals to this one.
+     * @return true if this IPad and the other object are equal
      */
     @Override
     public boolean equals(final Object o)
@@ -98,33 +122,26 @@ final class IPad extends IDevice
     }
 
     /**
-     * Returns a hash code value for this iPad.
-     * @return a hash code value based on the last character in osVersion.
+     * Returns a hashcode value for this iPad.
+     *
+     * @return a hashcode value
      */
     @Override
     public int hashCode()
     {
-        final int prime1;
-        final int prime2;
-        final char osVersionLastChar;
-
-        int result;
-
-        prime1 = 17;
-        prime2 = 31;
-        osVersionLastChar = osVersion.charAt(osVersion.length() - 1);
-
-        result = prime1 * prime2 + osVersionLastChar;
-
-        return result;
+        return this.osVersion.hashCode();
     }
 
+    /*
+     * Validates the OS version.
+     *
+     * @param osVersion the OS version to be validated
+     */
     private static void validateOsVersion(final String osVersion)
     {
-        if (osVersion == null || osVersion.isBlank())
+        if (osVersion == null || osVersion.isEmpty())
         {
-            throw new IllegalArgumentException("Invalid osVersion: " +
-                                               "osVersion can not be null or empty");
+            throw new IllegalArgumentException("Invalid osVersion: " + osVersion);
         }
     }
 }

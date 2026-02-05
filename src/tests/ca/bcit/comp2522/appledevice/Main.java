@@ -1,17 +1,23 @@
 package ca.bcit.comp2522.appledevice;
 
 /**
+ * Creates some IDevices (IPods, IPhones, and IPhone17s) to test their implementation
+ * of equals().
  *
  * @author Mischa Potter Set D
- * @author Sal Yunus
+ * @author Steven Chi Set D
  * @version 1.0
  */
-
 public class Main
 {
+    /**
+     * Drives the program.
+     *
+     * @param args command line arguments (unused)
+     */
     public static void main(final String[] args)
     {
-// Create IPod objects
+        // Create IPod objects
         final IPod ipod1;
         final IPod ipod2;
         final IPod ipod3;
@@ -22,6 +28,7 @@ public class Main
 
         // Test equality and inequality for IPod
         System.out.println("IPod Equality Test:");
+
         if (!ipod1.equals(ipod2))
         {
             System.out.println("CORRECT: ipod1 is not equal to ipod2");
@@ -82,6 +89,7 @@ public class Main
 
         // Test equality and inequality for IPhone
         System.out.println("IPhone Equality Test:");
+
         if (!iphone1.equals(iphone2))
         {
             System.out.println("CORRECT: iphone1 is not equal to iphone2");
@@ -112,6 +120,7 @@ public class Main
 
         // Test equality and inequality for IPhone17
         System.out.println("IPhone17 Equality Test:");
+        
         if (iphone16_1.equals(iphone16_2))
         {
             System.out.println("CORRECT: iphone17_1 is equal to iphone17_2");

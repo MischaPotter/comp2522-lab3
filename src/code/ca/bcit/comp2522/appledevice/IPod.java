@@ -4,7 +4,6 @@ package ca.bcit.comp2522.appledevice;
  * Models an iPod that have number of songs stored, and maximum volume in decibels.
  *
  * @author Mischa Potter Set D
- * @author Sal Yunus Set D
  * @author Steven Chi Set D
  * @version 1.0
  */
@@ -15,43 +14,56 @@ final class IPod extends IDevice
     private final static double MIN_VOLUME_DECIBELS = 0;
     private final static double MAX_VOLUME_DECIBELS = 120;
 
-    private final int numSongsStored;
-    private final double maxVolumeDb;
+    private int    numSongsStored;
+    private double maxVolumeDecibels;
 
     /**
      * Constructs an iPod object with specific data.
      *
-     * @param numSongsStored the number of songs stored in the device.
-     * @param maxVolumeDb the maximum volume of decibels.
+     * @param numSongsStored    the number of songs stored in the device
+     * @param maxVolumeDecibels the maximum volume of decibels
      */
     IPod(final int numSongsStored,
-         final double maxVolumeDb)
+         final double maxVolumeDecibels)
     {
         super("music");
 
         validateNumSongsSorted(numSongsStored);
-        validateMaxVolumeDb(maxVolumeDb);
+        validateMaxVolumeDb(maxVolumeDecibels);
 
-        this.numSongsStored = numSongsStored;
-        this.maxVolumeDb    = maxVolumeDb;
+        this.numSongsStored    = numSongsStored;
+        this.maxVolumeDecibels = maxVolumeDecibels;
     }
 
     /**
      * Returns the num of songs have stored.
+     *
      * @return the num of songs have stored
      */
-    public int getNumSongsStored()
+    protected int getNumSongsStored()
     {
         return numSongsStored;
     }
 
     /**
      * Returns the max volume decibels user have set.
+     *
      * @return the max volume decibels user have set
      */
-    public double getMaxVolumeDb()
+    protected double getMaxVolumeDecibels()
     {
-        return maxVolumeDb;
+        return maxVolumeDecibels;
+    }
+
+
+    public void setNumSongsStored(final int numSongsStored)
+    {
+        this.numSongsStored = numSongsStored;
+    }
+
+    public void setMaxVolumeDecibels(final double maxVolumeDecibels)
+    {
+        this.maxVolumeDecibels = maxVolumeDecibels;
     }
 
     /**
@@ -64,7 +76,8 @@ final class IPod extends IDevice
 
     /**
      * Returns a String representation of this iPod.
-     * @return a formatted string describing the iPod state.
+     *
+     * @return a formatted string describing the iPod state
      */
     @Override
     public String toString()
@@ -72,10 +85,12 @@ final class IPod extends IDevice
         final StringBuilder builder;
         builder = new StringBuilder();
 
+        builder.append(super.toString());
         builder.append("Number of songs stored: ");
         builder.append(numSongsStored);
         builder.append("\nMax volume (in decibels): ");
-        builder.append(maxVolumeDb);
+        builder.append(maxVolumeDecibels);
+        builder.append("\n");
 
         return builder.toString();
     }
@@ -84,13 +99,11 @@ final class IPod extends IDevice
      * Returns true if two iPod have the same amount of stored songs.
      *
      * @param o the reference object with which to compare
-     *
-     * @return is the object equals to this one.
+     * @return true if the object equals to this one
      */
     @Override
     public boolean equals(final Object o)
     {
-        // null check is cover in instanceof
         if (!(o instanceof IPod))
         {
             return false;
@@ -104,41 +117,40 @@ final class IPod extends IDevice
 
     /**
      * Returns a hash code value for this iPod.
-     * @return a hash code value based on the number of songs stored.
+     *
+     * @return a hash code value based on the number of songs stored
      */
     @Override
     public int hashCode()
     {
-        final int prime1;
-        final int prime2;
-        int result;
-
-        prime1 = 17;
-        prime2 = 31;
-
-        result = prime1 * prime2 + numSongsStored;
-
-        return result;
+        return this.numSongsStored;
     }
 
-
-    private static void validateMaxVolumeDb(double maxVolumeDb)
+    /*
+     * Validates the max volume (in decibels).
+     *
+     * @param maxVolumeDecibels the max volume in decibels to be validated
+     */
+    private static void validateMaxVolumeDb(final double maxVolumeDecibels)
     {
-        if(maxVolumeDb < MIN_VOLUME_DECIBELS ||
-           maxVolumeDb > MAX_VOLUME_DECIBELS)
+        if (maxVolumeDecibels < MIN_VOLUME_DECIBELS ||
+            maxVolumeDecibels > MAX_VOLUME_DECIBELS)
         {
-            throw new IllegalArgumentException("Max volume db should be between" +
-                                               MIN_VOLUME_DECIBELS +" and " + MAX_VOLUME_DECIBELS);
+            throw new IllegalArgumentException("Invalid volume: " + maxVolumeDecibels);
         }
     }
 
-    private static void validateNumSongsSorted(int numSongsStored)
+    /*
+     * Validates the number of songs being stored on this IPod.
+     *
+     * @param numSongsStored the number of songs stored to be validated
+     */
+    private static void validateNumSongsSorted(final int numSongsStored)
     {
-        if(numSongsStored < MIN_SONGS_STORED ||
-           numSongsStored > MAX_SONGS_STORED)
+        if (numSongsStored < MIN_SONGS_STORED ||
+            numSongsStored > MAX_SONGS_STORED)
         {
-            throw new IllegalArgumentException("Number of songs stored inside should be between" +
-                                               MIN_SONGS_STORED +" and " + MAX_SONGS_STORED);
+            throw new IllegalArgumentException("Invalid number of songs stored: " + numSongsStored);
         }
     }
 }
