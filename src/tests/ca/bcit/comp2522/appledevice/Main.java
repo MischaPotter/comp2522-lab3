@@ -6,6 +6,7 @@ package ca.bcit.comp2522.appledevice;
  *
  * @author Mischa Potter Set D
  * @author Steven Chi Set D
+ *
  * @version 1.0
  */
 public class Main
@@ -120,7 +121,7 @@ public class Main
 
         // Test equality and inequality for IPhone17
         System.out.println("IPhone17 Equality Test:");
-        
+
         if (iphone16_1.equals(iphone16_2))
         {
             System.out.println("CORRECT: iphone17_1 is equal to iphone17_2");

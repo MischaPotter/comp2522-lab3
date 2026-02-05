@@ -5,6 +5,7 @@ package ca.bcit.comp2522.appledevice;
  *
  * @author Mischa Potter Set D
  * @author Steven Chi Set D
+ *
  * @version 1.0
  */
 class IPhone extends IDevice
@@ -72,45 +73,12 @@ class IPhone extends IDevice
         this.carrier = carrier;
     }
 
-    /*
-     * Validates the carrier.
-     *
-     * @param carrier to be validated
-     */
-    private static void validateCarrier(final String carrier)
-    {
-        if (carrier == null || carrier.isBlank())
-        {
-            throw new IllegalArgumentException("Invalid carrier: " + carrier);
-        }
-    }
-
     /**
      * Prints the details of this iPhone.
      */
     public void printDetails()
     {
         System.out.println(this);
-    }
-
-    /**
-     * Returns a String representation of this iPhone.
-     *
-     * @return a formatted string describing this iPhone
-     */
-    @Override
-    public String toString()
-    {
-
-        final StringBuilder builder;
-        builder = new StringBuilder();
-
-        builder.append(super.toString());
-        builder.append("Number of minutes remaining on phone plan: ");
-        builder.append(numMinutesRemaining);
-        builder.append("\nCarrier: ");
-        builder.append(carrier + "\n");
-        return builder.toString();
     }
 
     /**
@@ -143,5 +111,39 @@ class IPhone extends IDevice
     public int hashCode()
     {
         return (int) this.numMinutesRemaining;
+    }
+
+    /**
+     * Returns a String representation of this iPhone.
+     *
+     * @return a formatted string describing this iPhone
+     */
+    @Override
+    public String toString()
+    {
+        final StringBuilder builder;
+        builder = new StringBuilder();
+
+        builder.append(super.toString());
+        builder.append("Number of minutes remaining on phone plan: ");
+        builder.append(numMinutesRemaining);
+        builder.append("\nCarrier: ");
+        builder.append(carrier);
+        builder.append("\n");
+
+        return builder.toString();
+    }
+
+    /*
+     * Validates the carrier.
+     *
+     * @param carrier to be validated
+     */
+    private static void validateCarrier(final String carrier)
+    {
+        if (carrier == null || carrier.isBlank())
+        {
+            throw new IllegalArgumentException("Invalid carrier: " + carrier);
+        }
     }
 }

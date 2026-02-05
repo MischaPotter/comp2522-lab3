@@ -5,6 +5,7 @@ package ca.bcit.comp2522.appledevice;
  *
  * @author Mischa Potter Set D
  * @author Steven Chi Set D
+ *
  * @version 1.0
  */
 
@@ -93,10 +94,15 @@ final class IPhone17 extends IPhone
         return this.highResCamera == p.isHighResCamera() && super.equals(p);
     }
 
+    /**
+     * Returns the hashcode for an IPhone17.
+     *
+     * @return the hashcode for this IPhone17
+     */
     @Override
     public int hashCode()
     {
-        return
+        return (int) this.getNumMinutesRemaining();
     }
 
     /**
